@@ -12,6 +12,7 @@
             "lib": [
               {"name": "shadcn/ui", "cmd": "npx shadcn-ui@latest init"},
               {"name": "Material UI", "cmd": "npm install @mui/material @emotion/react @emotion/styled"},
+              {"name": "Material Icons", "cmd": "npm install @mui/icons-material @mui/material @emotion/styled @emotion/react"},
               {"name": "Chakra UI", "cmd": "npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion"},
               {"name": "SCSS", "cmd": "npm install scss"}
             ]
@@ -129,6 +130,7 @@
             "lib": [
               {"name": "shadcn/ui", "cmd": "npx shadcn-ui@latest init"},
               {"name": "Material UI", "cmd": "npm install @mui/material @emotion/react @emotion/styled"},
+              {"name": "Material Icons", "cmd": "npm install @mui/icons-material @mui/material @emotion/styled @emotion/react"},
               {"name": "Chakra UI", "cmd": "npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion"},
               {"name": "SCSS", "cmd": "npm install scss"}
             ]
