@@ -1,0 +1,111 @@
+[
+  {
+    "pm": "npm",
+    "framework": [
+      {
+        "name": "React",
+        "cmd": "npx create-react-app",
+        "libs": {
+          "ui": [
+            {"name": "shadcn/ui", "cmd": "npx shadcn-ui@latest init"},
+            {"name": "Material UI", "cmd": "npm install @mui/material @emotion/react @emotion/styled"},
+            {"name": "Chakra UI", "cmd": "npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion"},
+            {"name": "SCSS", "cmd": "npm install scss"}
+          ],
+          "state": [
+            {"name": "Redux Toolkit", "cmd": "npm install @reduxjs/toolkit react-redux"},
+            {"name": "Jotai ", "cmd": "npm install jotai"},
+            {"name": "Zustand ", "cmd": "npm install zustand"}
+          ],
+          "routing": [
+            {"name": "React Router", "cmd": "npm install react-router-dom"}
+          ],
+          "form": [
+            {"name": "React Hook Form", "cmd": "npm install react-hook-form"},
+            {"name": "Zod", "cmd": "npm install zod"},
+            {"name": "Formik", "cmd": "npm install zustand"}
+          ],
+          "fetch": [
+            {"name": "React Query", "cmd": "npm install @tanstack/react-query"},
+            {"name": "Axios", "cmd": "npm install axios"},
+            {"name": "SWR", "cmd": "npm install swr"}
+          ]
+        }
+      },
+      {
+        "name": "Vite",
+        "cmd": "npm create vite",
+        "libs": {
+          "ui": [
+            {"name": "shadcn/ui", "cmd": "npx shadcn-ui@latest init"},
+            {"name": "Material UI", "cmd": "npm install @mui/material @emotion/react @emotion/styled"},
+            {"name": "Chakra UI", "cmd": "npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion"},
+            {"name": "SCSS", "cmd": "npm install scss"}
+          ],
+          "state": [
+            {"name": "Redux Toolkit", "cmd": "npm install @reduxjs/toolkit react-redux"},
+            {"name": "Jotai", "cmd": "npm install jotai"},
+            {"name": "Zustand", "cmd": "npm install zustand"}
+          ],
+          "routing": [
+            {"name": "React Router", "cmd": "npm install react-router-dom"}
+          ],
+          "form": [
+            {"name": "React Hook Form", "cmd": "npm install react-hook-form"},
+            {"name": "Zod", "cmd": "npm install zod"},
+            {"name": "Formik", "cmd": "npm install formik"}
+          ],
+          "fetch": [
+            {"name": "React Query", "cmd": "npm install @tanstack/react-query"},
+            {"name": "Axios", "cmd": "npm install axios"},
+            {"name": "SWR", "cmd": "npm install swr"}
+          ]
+        }
+      },
+      {
+        "name": "Next.js",
+        "cmd": "npx create-next-app",
+        "libs": {
+          "ui": [
+            {"name": "shadcn/ui", "cmd": "npx shadcn-ui@latest init"},
+            {"name": "Material UI", "cmd": "npm install @mui/material @emotion/react @emotion/styled"},
+            {"name": "Chakra UI", "cmd": "npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion"},
+            {"name": "SCSS", "cmd": "npm install scss"}
+          ],
+          "state": [
+            {"name": "Redux Toolkit", "cmd": "npm install @reduxjs/toolkit react-redux"},
+            {"name": "Jotai", "cmd": "npm install jotai"},
+            {"name": "Zustand", "cmd": "npm install zustand"}
+          ],
+          "form": [
+            {"name": "React Hook Form", "cmd": "npm install react-hook-form"},
+            {"name": "Zod", "cmd": "npm install zod"},
+            {"name": "Formik", "cmd": "npm install formik"}
+          ],
+          "fetch": [
+            {"name": "React Query", "cmd": "npm install @tanstack/react-query"},
+            {"name": "Axios", "cmd": "npm install axios"},
+            {"name": "SWR", "cmd": "npm install swr"}
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "pm": "pip",
+    "framework": [
+      {
+        "name": "Django",
+        "cmd": "pip install django",
+        "libs": {
+        }
+      },
+      {
+        "name": "Flask",
+        "cmd": "pip install flask",
+        "libs": {
+        }
+      }
+    ]
+  }
+]

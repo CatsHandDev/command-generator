@@ -1,0 +1,139 @@
+.header {
+  width: 100%;
+  height: 76px;
+  border-bottom: 1px solid #2c3e50;
+
+  h1 {
+    margin: 0;
+    padding: .5rem;
+    text-indent: .5rem;
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  width: 100vw;
+  display: flex;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: #2c3e50;
+  color: white;
+  padding-inline: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+
+    &.active {
+      background-color: #34495e;
+      border-radius: 5px;
+    }
+
+    &:hover {
+      background-color: #3b4f63;
+    }
+  }
+}
+
+.main {
+  width: 80%;
+  height: calc(100vh - 76px);
+  padding-inline: 1rem;
+  position: relative;
+  overflow-y: scroll;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  section {
+    margin-bottom: 2rem;
+
+    h2 {
+      text-indent:  1rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #2c3e50;
+      font-size: 1.5rem;
+    }
+
+    button {
+      margin-right: 10px;
+      padding: 8px 12px;
+      // border: 1px solid #2c3e50;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: .2s ease-in-out;
+
+      &.active {
+        background-color: #2c3e50;
+        color: white;
+      }
+
+      &:hover {
+        background-color: #34495e;
+        color: white;
+        transition: .2s ease-in-out;
+      }
+    }
+  }
+}
+
+.commandBox {
+  width: calc(100% - 40px);
+  min-width: 600px;
+  margin-top: 20px;
+  padding: .5rem 1rem;
+  border: 1px solid #2c3e50;
+  border-radius: 5px;
+  background-color: #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+
+  .commandInput {
+    height: 44px;
+    margin: 0;
+    border: none;
+    background-color: inherit;
+    font-size: 1rem;
+    font-family: monospace;
+    line-height: 44px;
+    outline: none;
+  }
+
+  button {
+    padding: .25rem .5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: inherit;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #34495e;
+      color: #fff;
+    }
+  }
+}
