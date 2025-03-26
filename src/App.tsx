@@ -12,32 +12,32 @@ type Lib = {
   cmd: string;
 };
 
-type Libs = {
-  ui: Lib[];
-  state: Lib[];
-  routing: Lib[];
-  form: Lib[];
-  fetch: Lib[];
-};
-
 export default function CommandGenerator() {
   const [platform, setPlatform] = useState('Windows');
   const [packageManager, setPackageManager] = useState('');
   const [framework, setFramework] = useState('');
   const [commandFramework, setCommandFramework] = useState<string>('');
-  const [commandUi, setCommandUi] = useState<{ name: string; cmd: string }[]>([]);
-  const [commandState, setCommandState] = useState<{ name: string; cmd: string }[]>([]);
-  const [commandRouting, setCommandRouting] = useState<{ name: string; cmd: string }[]>([]);
-  const [commandForm, setCommandForm] = useState<{ name: string; cmd: string }[]>([]);
-  const [commandFetch, setCommandFetch] = useState<{ name: string; cmd: string }[]>([]);
+  const [, setCommandUi] = useState<{ name: string; cmd: string }[]>([]);
+  const [, setCommandState] = useState<{ name: string; cmd: string }[]>([]);
+  const [, setCommandRouting] = useState<{ name: string; cmd: string }[]>([]);
+  const [, setCommandForm] = useState<{ name: string; cmd: string }[]>([]);
+  const [, setCommandFetch] = useState<{ name: string; cmd: string }[]>([]);
   const [copiedIcon, setCopiedIcon] = useState<{ [key: string]: boolean }>({
     framework: false,
     ui: false,
     state: false,
     routing: false,
     form: false,
-    fetch: false
+    fetch: false,
+    date: false,
+    processing: false,
+    request: false,
   });
+  const [selectedLibSections, setSelectedLibSections] = useState<{
+    title: string;
+    lib: { name: string; cmd: string }[];
+    id: string
+  }[]>([]);
 
   const handlePlatformSelect = (pf: string) => {
     setPlatform(pf);
@@ -58,18 +58,43 @@ export default function CommandGenerator() {
   const handleFrameworkSelect = (fw: string) => {
     setFramework(fw);
     const selectedFramework = data
-      .find((d) => d.pm === 'npm') // npm または pip を選択
+      .find((d) => d.pm === packageManager)
       ?.framework.find((f) => f.name === fw);
 
     if (selectedFramework) {
-      updateFrameWork(packageManager, fw, selectedFramework.libs);
-    };
+      // フレームワークごとにlibsの構造が異なるため、適切に処理
+      const libs = selectedFramework.libs;
+
+      // libsが配列かオブジェクトかを判定
+      const libSections = Array.isArray(libs)
+        ? libs
+        : Object.entries(libs).map(([id, libraryList]) => ({
+            id,
+            lib: libraryList as { name: string; cmd: string }[],
+            title: id === 'ui' ? 'UIデザイン' :
+                   id === 'state' ? '状態管理' :
+                   id === 'routing' ? 'ルーティング' :
+                   id === 'form' ? 'フォーム' :
+                   id === 'fetch' ? 'データフェッチ' :
+                   id
+          }));
+
+      // 状態を更新
+      setSelectedLibSections(libSections as {
+        title: string;
+        lib: { name: string; cmd: string }[];
+        id: string
+      }[]);
+
+      updateFrameWork(packageManager, fw, libs);
+    }
   };
 
   const updateFrameWork = (
     pm: string,
     fw: string,
-    libs: Partial<Libs> = {}
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    libs: any = {}
   ) => {
     let cmd = "";
 
@@ -79,17 +104,16 @@ export default function CommandGenerator() {
       cmd = pm === "sudo" ? `sudo ${fwCmd}` : fwCmd;
     }
 
-    // `libs` のプロパティが `undefined` にならないようにデフォルト値を適用し、
-    // `cmd` と `name` のペアとしてオブジェクト配列に変換
+    // 各セクションのライブラリコマンドを適切に設定
     setCommandFramework(cmd);
-    setCommandUi(libs.ui?.map(lib => ({ name: lib.name, cmd: lib.cmd })) ?? []);
-    setCommandState(libs.state?.map(lib => ({ name: lib.name, cmd: lib.cmd })) ?? []);
-    setCommandRouting(libs.routing?.map(lib => ({ name: lib.name, cmd: lib.cmd })) ?? []);
-    setCommandForm(libs.form?.map(lib => ({ name: lib.name, cmd: lib.cmd })) ?? []);
-    setCommandFetch(libs.fetch?.map(lib => ({ name: lib.name, cmd: lib.cmd })) ?? []);
+    setCommandUi(libs.ui?.map ? libs.ui.map((lib: Lib) => ({ name: lib.name, cmd: lib.cmd })) : []);
+    setCommandState(libs.state?.map ? libs.state.map((lib: Lib) => ({ name: lib.name, cmd: lib.cmd })) : []);
+    setCommandRouting(libs.routing?.map ? libs.routing.map((lib: Lib) => ({ name: lib.name, cmd: lib.cmd })) : []);
+    setCommandForm(libs.form?.map ? libs.form.map((lib: Lib) => ({ name: lib.name, cmd: lib.cmd })) : []);
+    setCommandFetch(libs.fetch?.map ? libs.fetch.map((lib: Lib) => ({ name: lib.name, cmd: lib.cmd })) : []);
   };
 
-const copyToClipboard = (command: string, section: keyof typeof copiedIcon) => {
+  const copyToClipboard = (command: string, section: keyof typeof copiedIcon) => {
     // クリップボードにテキストをコピー
     navigator.clipboard.writeText(command).then(() => {
 
@@ -177,56 +201,18 @@ const copyToClipboard = (command: string, section: keyof typeof copiedIcon) => {
             </section>
           )}
 
-          {framework && (
-            <LibrarySection
-              title={"UIデザイン"}
-              command={commandUi}
-              copyToClipboard={(command) => copyToClipboard(command, 'ui')}
-              copiedIcon={copiedIcon}
-              lib={('ui')}
-            />
+          {selectedLibSections.length > 0 && (
+            selectedLibSections.map((libSection, index) => (
+              <LibrarySection
+                key={index}
+                title={libSection.title}
+                command={libSection.lib.map(lib => ({ name: lib.name, cmd: lib.cmd }))}
+                copyToClipboard={(command) => copyToClipboard(command, libSection.id)}
+                copiedIcon={copiedIcon}
+                lib={libSection.id}
+              />
+            ))
           )}
-
-          {framework && (
-            <LibrarySection
-              title={'状態管理ライブラリ'}
-              command={commandState}
-              copyToClipboard={(command) => copyToClipboard(command, 'state')}
-              copiedIcon={copiedIcon}
-              lib={('state')}
-            />
-          )}
-
-          {framework && (
-            <LibrarySection
-              title={'ルーティングライブラリ'}
-              command={commandRouting}
-              copyToClipboard={(command) => copyToClipboard(command, 'routing')}
-              copiedIcon={copiedIcon}
-              lib={('routing')}
-            />
-          )}
-
-          {framework && (
-            <LibrarySection
-              title={'フォーム処理ライブラリ'}
-              command={commandForm}
-              copyToClipboard={(command) => copyToClipboard(command, 'form')}
-              copiedIcon={copiedIcon}
-              lib={('form')}
-            />
-          )}
-
-          {framework && (
-            <LibrarySection
-              title={'データフェッチングライブラリ'}
-              command={commandFetch}
-              copyToClipboard={(command) => copyToClipboard(command, 'fetch')}
-              copiedIcon={copiedIcon}
-              lib={('fetch')}
-            />
-          )}
-
         </main>
       </div>
     </div>
