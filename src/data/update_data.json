@@ -1,0 +1,170 @@
+[
+  {
+    "pm": "npm",
+    "actions": {
+      "install": "i",
+      "uninstall": "rm",
+      "update": "up"
+    },
+    "options": {
+      "global": "-g",
+      "version": "-v"
+    },
+    "framework": [
+      {
+        "name": "React",
+        "cmd": {
+          "pmc": "npx",
+          "package": "create-react-app",
+          "version": [
+            "latest",
+            "0.0.0"
+          ]
+        }
+      },
+      {
+        "name": "Vite",
+        "cmd": {
+          "pmc": "npm",
+          "package": "create vite",
+          "version": [
+            "latest",
+            "0.0.0"
+          ]
+        }
+      },
+      {
+        "name": "Next.js",
+        "cmd": {
+          "pmc": "npx",
+          "package": "create-next-app",
+          "version": [
+            "latest",
+            "0.0.0"
+          ]
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "id": "ui",
+        "title": "UIデザイン",
+        "lib": [
+          {"name": "shadcn/ui", "cmd": "npx shadcn-ui@latest init"},
+          {"name": "Material UI", "cmd": "npm install @mui/material @emotion/react @emotion/styled"},
+          {"name": "Material Icons", "cmd": "npm install @mui/icons-material @mui/material @emotion/styled @emotion/react"},
+          {"name": "Chakra UI", "cmd": "npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion"},
+          {"name": "SCSS", "cmd": "npm install scss"}
+        ]
+      },
+      {
+        "id": "state",
+        "title": "状態管理",
+        "lib": [
+          {"name": "Redux Toolkit", "cmd": "npm install @reduxjs/toolkit react-redux"},
+          {"name": "Jotai ", "cmd": "npm install jotai"},
+          {"name": "Zustand ", "cmd": "npm install zustand"}
+        ]
+      },
+      {
+        "id": "routing",
+        "title": "ルーティング",
+        "lib": [
+          {"name": "React Router", "cmd": "npm install react-router-dom"}
+        ]
+      },
+      {
+        "id": "form",
+        "title": "フォーム",
+        "lib": [
+          {"name": "React Hook Form", "cmd": "npm install react-hook-form"},
+          {"name": "Zod", "cmd": "npm install zod"},
+          {"name": "Formik", "cmd": "npm install zustand"}
+        ]
+      },
+      {
+        "id": "fetch",
+        "title": "データフェッチ",
+        "lib": [
+          {"name": "React Query", "cmd": "npm install @tanstack/react-query"},
+          {"name": "Axios", "cmd": "npm install axios"},
+          {"name": "SWR", "cmd": "npm install swr"}
+        ]
+      },
+      {
+        "id": "date",
+        "title": "日付管理",
+        "lib": [
+          {"name": "react-datepicker", "cmd": "npm install react-datepicker"},
+          {"name": "MUI X Date and Time Pickers", "cmd": "npm install @mui/x-date-pickers dayjs"}
+        ]
+      }
+    ]
+  },
+  {
+    "pm": "pip",
+    "actions": {
+      "install": "install",
+      "uninstall": "rm",
+      "update": "install --upgrade"
+    },
+    "options": {
+      "global": "-g",
+      "version": "-v"
+    },
+    "framework": [
+      {
+        "name": "Django",
+        "cmd": {
+          "pmc": "pip",
+          "package": "django",
+          "version": [
+            "latest",
+            "0.0.0"
+          ]
+        }
+      },
+      {
+        "name": "Flask",
+        "cmd": {
+          "pmc": "pip",
+          "package": "flask",
+          "version": [
+            "latest",
+            "0.0.0"
+          ]
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "id": "processing",
+        "title": "データ処理",
+        "lib": [
+          {"name": "pandas", "cmd": "pip install pandas"},
+          {"name": "Numpy", "cmd": "pip install Numpy"},
+          {"name": "matplotlib", "cmd": "pip install matplotlib"},
+          {"name": "sklearn", "cmd": "pip install sklearn"},
+          {"name": "Tensorflow", "cmd": "pip install Tensorflow"},
+          {"name": "OpenCV", "cmd": "pip install OpenCV"},
+          {"name": "OpenPyXL", "cmd": "pip install OpenPyXL"}
+        ]
+      },
+      {
+        "id": "request",
+        "title": "データ取得",
+        "lib": [
+          {"name": "Beautiful Soup", "cmd": "pip install beautifulsoup4"},
+          {"name": "Requests", "cmd": "pip install Requests"}
+        ]
+      },
+      {
+        "id": "date",
+        "title": "日付管理",
+        "lib": [
+          {"name": "dateutil", "cmd": "pip install dateutil"}
+        ]
+      }
+    ]
+ }
+]

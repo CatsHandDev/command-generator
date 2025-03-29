@@ -175,7 +175,7 @@ export default function CommandGenerator() {
               <h2 className={styles.h2}>フレームワーク</h2>
 
               {data
-                .filter((fw) => fw.pm === packageManager) // 選択された packageManager のみを表示
+                .filter((fw) => fw.pm === packageManager)
                 .map((fw) => (
                   <div key={fw.pm}>
                     <div>
