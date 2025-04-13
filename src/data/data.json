@@ -190,6 +190,7 @@
           {"name": "Compose環境 起動 (ログ表示)", "cmd": "docker-compose up [--build] "},
           {"name": "Compose環境 停止", "cmd": "docker-compose stop "},
           {"name": "Compose環境 停止＆削除", "cmd": "docker-compose down [-v]"},
+          {"name": "Compose環境 再起動", "cmd": "docker-compose restart "},
           {"name": "Compose環境 再構築＆起動", "cmd": "docker-compose up -d --force-recreate --build"},
           {"name": "Compose設定ファイル検証", "cmd": "docker-compose config"},
           {"name": "シェル実行", "cmd": "docker-compose exec app bash"},
